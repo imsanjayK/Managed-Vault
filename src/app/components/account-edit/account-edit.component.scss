@@ -1,0 +1,30 @@
+/*#region page-not-found.component.css */
+.error-container {
+    text-align: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+  }
+  
+  .error-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #b92020;
+  }
+  
+  .error-message {
+    font-size: 18px;
+    color: #6c757d;
+  }
+  
+  .error-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #0275d8;
+  }
+  
+  .error-link:hover {
+    text-decoration: underline;
+  }
+ /*#endregion */

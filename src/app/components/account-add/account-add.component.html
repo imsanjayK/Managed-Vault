@@ -1,0 +1,136 @@
+<div class="bg-card m-2 p-2 rounded">
+  <h2>Account Form</h2>
+  <hr class="border-top border-light w-100 mx-auto">
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <!-- <form  [formGroup]="accountForm"> -->
+    <!-- Account Name -->
+    <div class="mb-3">
+      <label for="accountName" class="form-label">Account Name</label>
+      <input id="accountName" class="form-control bg-title" formControlName="accountName" />
+      <div *ngIf="accountForm.get('accountName')?.touched" class="invalid-feedback">
+        Account Name is required.
+      </div>
+    </div>
+
+    <!-- Account Type -->
+    <div class="mb-3">
+      <label for="type" class="form-label">Account Type</label>
+      <select id="type" class="form-select bg-title" formControlName="accountType">
+        <option class="bg-dark" *ngFor="let type of AccountType | keyvalue" [value]="type.value">{{ type.value }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Link -->
+    <div class="mb-3">
+      <label for="link" class="form-label">Account Link</label>
+      <input id="link" class="form-control bg-title" formControlName="link" />
+      <div *ngIf="accountForm.get('link')?.touched && accountForm.get('link')?.invalid" class="invalid-feedback">
+        Valid link is required.
+      </div>
+    </div>
+
+    <!-- Credentials -->
+    <div formArrayName="credentials">
+      <div *ngFor="let credential of credentials.controls; let i = index" [formGroupName]="i" class="mb-3">
+        <label class="form-label">Credential {{ i + 1 }}</label>
+        <div class="d-flex">
+          <div class="flex-fill me-2">
+            <input formControlName="username" class="form-control bg-title" placeholder="Username" />
+          </div>
+          <div class="flex-fill">
+            <input formControlName="password" class="form-control bg-title" placeholder="Password" />
+          </div>
+        </div>
+        <div *ngIf="credential.invalid && credential.touched" class="invalid-feedback d-block">
+          Both Username and Password are required.
+        </div>
+      </div>
+      <div class="clearfix">
+        <button type="button" class="btn btn-secondary fw-bolder text-start float-start m-1" (click)="addCredential()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-file-earmark-x" viewBox="0 0 16 16">
+            <path
+              d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293z" />
+            <path
+              d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+          </svg>
+          Credential</button>
+
+        <button type="button" class="btn btn-secondary fw-bolder text-start float-end m-1" (click)="addCredential()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+            <path
+              d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+            <path
+              d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+          </svg>
+          Credential</button>
+      </div>
+    </div>
+
+    <!-- Custom Data -->
+    <div formArrayName="customDatas">
+      <div *ngFor="let customData of customDatas.controls; let i = index" [formGroupName]="i" class="mb-3">
+        <label class="form-label">Custom Data {{ i + 1 }}</label>
+        <div class="d-flex">
+          <div class="flex-fill me-2">
+            <input formControlName="key" class="form-control bg-title" placeholder="Key" />
+          </div>
+          <div class="flex-fill">
+            <input formControlName="value" class="form-control bg-title" placeholder="Value" />
+          </div>
+        </div>
+        <div *ngIf="customData.invalid && customData.touched" class="invalid-feedback d-block">
+          Both Key and Value are required.
+        </div>
+      </div>
+      <div class="clearfix mt-2">
+        <button type="button" class="btn btn-secondary fw-bolder text-start float-start m-1" (click)="addCustomData()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-file-earmark-x" viewBox="0 0 16 16">
+            <path
+              d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293z" />
+            <path
+              d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+          </svg>
+          Custom Data</button>
+
+        <button type="button" class="btn btn-secondary fw-bolder text-start float-end m-1" (click)="addCustomData()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+            <path
+              d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+            <path
+              d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+          </svg>
+          Custom Data</button>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-center mt-3">
+      <button type="submit" class="btn btn-outline-light fw-bolder w-50"
+        [disabled]="accountForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+
+<div *ngIf="error" class="container">
+  <div class="error-container  m-5">
+    <h1 class="error-title">No records found</h1>
+    <p class="error-message">Please try later.</p>
+    <!-- <p class="error-message">{{error | json}}</p> -->
+  </div>
+</div>
+
+<div class="container p-5"></div>

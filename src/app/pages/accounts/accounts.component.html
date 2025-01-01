@@ -1,0 +1,17 @@
+<div class="container" *ngIf="accounts.length>0; else noAccounts">
+  <div class="row">
+  <span *ngFor="let account of accounts" class="col">
+    <vault-account [account]="account"
+      (click)="navigateToAccountDetail(account?.id)"></vault-account>
+  </span>
+  </div>
+</div>
+
+<ng-template #noAccounts class="container">
+  <div class="error-container">
+    <h1 class="error-title">No records found</h1>
+    <p class="error-message">Please try later.</p>
+  </div>
+</ng-template>
+
+<div class="container p-5"></div>

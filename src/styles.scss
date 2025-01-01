@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+$theme-color-light: #dc428e;
+$theme-color-dark: #4e285d;
+
+.bg-title {
+    background: linear-gradient(to right, $theme-color-dark, $theme-color-light);
+    color: white;
+}
+
+.bg-card {
+    background: linear-gradient(to right, #4e285d78, #d470a275);
+    color: white;
+}
+
+.bg-table {
+    background: rgb(220, 66, 142);
+    background: linear-gradient(180deg, rgba(220, 66, 143, 0.214) 0%, rgba(124, 27, 75, 0.351) 100%);
+    color: white;
+}
