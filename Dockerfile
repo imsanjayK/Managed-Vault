@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install the dependencies
-RUN npm install -g @angular/cli@18
+RUN npm install -g npm@11.0.0
 
 # Copy the rest of the application code
 COPY . .
