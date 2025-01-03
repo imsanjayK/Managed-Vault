@@ -1,0 +1,42 @@
+[
+    {
+        "id": "id1",
+        "accountName": "Public Provident Fund (PPF) 1",
+        "link": "www.example.com/profile/johnDoe",
+        "type": "Investment",
+        "credentials" : [
+            { "username": "john.doe@example.com", "password": "john123"
+            },
+            { "username": "jane.doe@example.com", "password": "jane456"
+            },
+            { "username": "admin@example.com", "password": "admin789"
+            }
+        ],
+          "customDatas": [
+            { "key": "Security Question", "value": "What is your pet\\'s name?"
+            },
+            { "key": "2FA Enabled", "value": "Yes"
+            }
+        ]
+    },
+    {
+        "id": "id2",
+        "accountName": "Public Provident Fund (PPF) 2",
+        "link": "www.example.com/profile/johnDoe",
+        "type": "Investment",
+        "credentials" : [
+            { "username": "john.doe@example.com", "password": "john123"
+            },
+            { "username": "jane.doe@example.com", "password": "jane456"
+            },
+            { "username": "admin@example.com", "password": "admin789"
+            }
+        ],
+          "customDatas": [
+            { "key": "Security Question", "value": "What is your pet\\'s name?"
+            },
+            { "key": "2FA Enabled", "value": "Yes"
+            }
+        ]
+    }
+]
