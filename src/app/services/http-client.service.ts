@@ -12,7 +12,7 @@ export class HttpClientService {
   // private apiUrl = 'accountdata.json';
   // private apiUrl = 'https://localhost:7042/api/account'
   // private apiUrl = 'https://bf59-2405-201-d002-41e5-3874-dfb3-9133-d87d.ngrok-free.app/api/account';
- private apiUrl = 'https://mangervaultwebapiservices-production.up.railway.app/' + this.urlPath;
+ private apiUrl = 'https://managevaultwebapiservices-production.up.railway.app/' + this.urlPath;
   constructor(private http: HttpClient) { }
 
   createAccount(account: Account): Observable<Account> {
