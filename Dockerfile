@@ -8,14 +8,14 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install the dependencies
-RUN npm install -g npm@10.7.0
+RUN npm install -g @angular/cli@18.2.10
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the Angular application for production
-RUN npm run build --omit=dev
-EXPOSE 8080
+RUN ng build --omit=dev
+EXPOSE 4200
 CMD ["ng", "serve", "--host", "0.0.0.0"]
 
 # Step 2: Serve the Angular application with Nginx
