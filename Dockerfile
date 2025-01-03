@@ -8,13 +8,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install the dependencies
-RUN npm install
+RUN npm install -g npm@10.7.0
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the Angular application for production
-RUN npm run build --prod
+RUN npm run build --omit=dev
 
 # Step 2: Serve the Angular application with Nginx
 FROM nginx:alpine
