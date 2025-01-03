@@ -1,5 +1,5 @@
 # Step 1: Build the Angular application
-FROM node:18 AS build
+FROM node:20 AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install the dependencies
-RUN npm install -g npm@11.0.0
+RUN npm install -g npm@10.7.0
 
 # Copy the rest of the application code
 COPY . .
