@@ -89,4 +89,7 @@ export class AccountEditComponent implements OnInit {
     // this.router.navigate(['/account/add']);
     this.router.navigate(['/account', 'edit', this.id]);
   }
+  cancel(){
+    this.router.navigate(['/account']);
+  }
 }

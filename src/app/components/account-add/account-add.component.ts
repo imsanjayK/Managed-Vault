@@ -172,4 +172,8 @@ export class AccountAddComponent implements OnInit {
       }
     );
   }
+
+  cancel(){
+    this.router.navigate(['/account']);
+  }
 }

@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AccountComponent } from '../../components/account/account.component';
 import { HttpClientService } from '../../services/http-client.service';
+import { FooterBarComponent } from '../../components/footer-bar/footer-bar.component';
 
 @Component({
   selector: 'vault-accounts',
   standalone: true,
-  imports: [AccountComponent, CommonModule],
+  imports: [AccountComponent, FooterBarComponent, CommonModule],
   templateUrl: './accounts.component.html',
   styleUrl: './accounts.component.scss',
   providers: [HttpClientService]
@@ -23,17 +24,26 @@ export class AccountsComponent implements OnInit {
   errorMessage: string = '';
 
   ngOnInit() {
-    this.loadAccounts();
+    console.log('account.init')
+    // this.loadAccounts();
   }
 
   loadAccounts() {
     this.accountService.getAllAccounts().subscribe(
       (data: Account[]) => {
         this.accounts = data;
+        console.log(JSON.stringify
+          (data)
+        )
       },
       (error) => {
         this.errorMessage = 'Error loading accounts: ' + error;
         // console.error('Error loading accounts', error);
+        if (error.name === 'TimeoutError') {
+          alert('Request timed out. Please try again later.');
+        } else {
+          alert('An error occurred. Please try again.');
+        }
       });
   }
 

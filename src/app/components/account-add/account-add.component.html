@@ -109,8 +109,10 @@
     </div>
 
     <!-- Submit Button -->
-    <div class="d-flex justify-content-center mt-3">
-      <button type="submit" class="btn btn-outline-light fw-bolder w-50"
+    <div class="clearfix mt-2">
+      <!-- <div class="d-flex justify-content-center mt-3"> -->
+      <button type="button" class="btn btn-outline-light fw-bolder w-25 float-start" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-outline-light fw-bolder w-25 float-end"
         [disabled]="accountForm.invalid">Submit</button>
     </div>
   </form>

@@ -5,9 +5,17 @@ import { AccountComponent } from './components/account/account.component';
 import { AccountAddComponent } from './components/account-add/account-add.component';
 import { MoreComponent } from './pages/more/more.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 export const routes: Routes = [
-    { path: '', component: AccountsComponent },
+    { path: '', component: WelcomeComponent },
+    { path: 'authN', component: AuthComponent },
+    // { path: 'account', component: AccountsComponent },
+    {
+        path: 'account',
+        loadChildren: () => import('./pages/accounts.module').then(m => m.AccountsModule) // Lazy load the account module
+    },
     { path: 'account/details/:id', component: AccountEditComponent },
     { path: 'account/:action/:id', component: AccountAddComponent },
     { path: 'more', component: MoreComponent },

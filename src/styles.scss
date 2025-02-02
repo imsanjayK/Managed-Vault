@@ -6,6 +6,10 @@
 $theme-color-light: #dc428e;
 $theme-color-dark: #4e285d;
 
+.theme-color-light {
+    color: $theme-color-light;
+}
+
 .bg-title {
     background: linear-gradient(to right, $theme-color-dark, $theme-color-light);
     color: white;
@@ -21,3 +25,5 @@ $theme-color-dark: #4e285d;
     background: linear-gradient(180deg, rgba(220, 66, 143, 0.214) 0%, rgba(124, 27, 75, 0.351) 100%);
     color: white;
 }
+
+
